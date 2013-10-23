@@ -53,25 +53,29 @@ module.exports = function(grunt) {
 
 		release: {
 			options: {
-				//bump: true, 											//default: true
-				//file: 'component.json', 								//default: package.json
-				//add: false, 											//default: true
-				//commit: false, 										//default: true
-				//tag: false, 											//default: true
-				//push: false, 											//default: true
-				//pushTags: false, 										//default: true
-				npm: false, 											//default: true
-				folder: './', 											//default project root
-				//tagName: 'version-<%= version %>', 					//default: '<%= version %>'
-				commitMessage: 'Release <%= version %>', 				//default: 'release <%= version %>'
-				tagMessage: 'Release <%= version %> via Grunt-Release', //default: 'Version <%= version %>',
+				npm: false, 														// default: true
+				folder: './', 														// default project root
+				commitMessage: 'Release <%= version %> via Grunt-Release', 			// default: 'release <%= version %>'
+				tagMessage: 'Release <%= version %> via Grunt-Release', 		// default: 'Version <%= version %>',
 				github: {
-					repo: 'c2cs/node-core', 						//put your user/repo here
-					usernameVar: 'GITHUB_USERNAME', 					//ENVIRONMENT VARIABLE that contains Github username
-					passwordVar: 'GITHUB_PASSWORD' 						//ENVIRONMENT VARIABLE that contains Github password
+					repo: 'c2cs/node-core', 										// put your user/repo here
+					usernameVar: 'GITHUB_USERNAME', 								// ENVIRONMENT VARIABLE that contains Github username
+					passwordVar: 'GITHUB_PASSWORD' 									// ENVIRONMENT VARIABLE that contains Github password
 				}
 			}
-		}
+		},
+
+		gitcommit: {
+	        core: {
+	            options: {
+	                message: 'Automated commit via Grunt-Git',
+	                ignoreEmpty: true
+	            },
+	            files: {
+	                src: ['./**/*.*']
+	            }
+	        }
+	    },
 
     });
 
@@ -81,6 +85,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-jsdoc');
     grunt.loadNpmTasks('grunt-mocha-test');
     grunt.loadNpmTasks('grunt-release');
+    grunt.loadNpmTasks('grunt-git');
 
     // Default task.
     grunt.registerTask('default', ['ts','watch']);

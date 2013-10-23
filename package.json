@@ -31,7 +31,8 @@
     "mocha": "~1.13.0",
     "supertest": "~0.8.0",
     "grunt-mocha-test": "~0.7.0",
-    "grunt-release": "~0.6.0"
+    "grunt-release": "~0.6.0",
+    "grunt-git": "~0.1.5"
   },
   "keywords": [
     "framework",
